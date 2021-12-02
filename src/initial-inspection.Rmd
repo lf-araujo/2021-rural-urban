@@ -1,0 +1,59 @@
+---
+title: "The title"
+date: "`r format(Sys.time(), '%d %B, %Y' )`"
+lang: en
+author: author name
+abstract:
+number-sections: true
+output:
+  html_notebook:
+    theme: readable
+    toc: yes
+    toc_float: yes
+    df_print: paged
+    code_folding: hide
+    code_downloading: yes
+# Bibliography
+# bibliography: "Y:/Projects/Name/doc/library.bib"
+---
+
+```{r setup, include=FALSE}
+set.seed(42)
+setwd(here::here()) # needed as we are in /src, in linux here() should be used
+
+# Loading the project
+ProjectTemplate::load.project()
+pclean()
+
+# R options
+options(
+  digits = 2, # Only two decimal digits
+  scipen = 999 # Remove scientific notation for pretty printing
+)
+
+# Knitr options
+knitr::opts_chunk$set(
+  comment = NA, # remove comment symbol
+  cache.path = "../cache/", # where should I save cache?
+  fig.path = "../graphs/", # where should I save figures?
+  echo = F, # dont echo by default
+  cache = F, # dont cache by default
+  fig.width = 10, # setting the best witdth for figures
+  fig.height = 7, # best height
+  dpi = 300 # high dpi for publication quality
+)
+```
+
+
+
+# System information
+
+```{r}
+project.info
+```
+
+```{r}
+sessionInfo()
+```
+
+# References
