@@ -44,6 +44,55 @@ knitr::opts_chunk$set(
 )
 ```
 
+# Flow chart for rural-urban 
+
+```{r}
+library(glue)
+library(DiagrammeR)
+
+grViz("
+digraph cohort_flow_chart
+{
+node [fontname = Helvetica, fontsize = 12, shape = box, width = 4]
+j[label = 'Linkage and Anonymization',fillcolor = LightBlue, style = filled, width = 2]
+l[label = 'One individual per row', fillcolor = LightBlue, style = filled, width = 2]
+k[label = 'Only adults', fillcolor = LightBlue, style = filled,
+  width = 2]
+m[label = 'ICD-10 F10.0, F10.1, F10.2', fillcolor = LightBlue, style = filled,
+  width = 2]
+
+a[label = '100 Million Brazilian Cohort 114,989,053']
+b[label = 'SIH-BA (2008-2017) 2,407,424']
+c[label = '2,407,424']
+d[label = '222,964']
+f[label = '6,176 individuals']
+z[label = '1,506 individuals']
+g[label = 'Males 1,365']
+h[label = 'Females 141']
+blank_4[label = '', width = 4, color = White]
+
+{ rank = same; a b}
+{ rank = same; blank_4 c j}
+{ rank = same; l d}
+{ rank = same; f k}
+{ rank = same; m z}
+{ rank = same; g h}
+
+a -> c;
+b -> c;
+b -> blank_4 [ dir = none, color = White];
+d -> f
+c -> d [ dir = none ];
+f -> z;
+z -> g;
+z -> h;
+
+
+}
+
+[1]: excluded
+")
+```
 
 
 # System information
